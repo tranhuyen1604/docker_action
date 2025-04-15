@@ -5,7 +5,6 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
-COPY next.config.js ./
 COPY . .
 
 RUN npm run build
@@ -14,7 +13,6 @@ FROM node:18-alpine AS runner
 
 WORKDIR /app
 
-COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/package-lock.json ./
