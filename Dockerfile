@@ -1,4 +1,4 @@
-FROM node:18-slim@sha256:securehash AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:18-slim@sha256:securehash AS runner
+FROM node:18-alpine AS runner
 
 WORKDIR /app
 
