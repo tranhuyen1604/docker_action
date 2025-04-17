@@ -20,17 +20,15 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build . -t tranhuyenbk96/docker_action:v1
-      
-      - name: Echo variable
-        run: echo "My name is ${{ vars.DOCKER_NAME }}"
+          docker build . -t tranhuyenbk96/docker_action:v2
 
       # - name: Log in to Docker Hub
       #   uses: docker/login-action@v3
       #   with:
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push Docker image
         run: |
-          docker push tranhuyenbk96/docker_action:v1
+          docker login -u tranhuyenbk96 -p ${{ secretes.DOCKER_TOKEN }}
+          docker push tranhuyenbk96/docker_action:v2
