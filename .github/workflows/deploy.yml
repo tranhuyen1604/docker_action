@@ -30,5 +30,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker login -u tranhuyenbk96 -p ${{ secretes.DOCKER_TOKEN }}
+          docker login -u tranhuyenbk96 -p ${{ secrets.ACCESS_TOKEN }}
           docker push tranhuyenbk96/docker_action:v2
